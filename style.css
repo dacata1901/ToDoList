@@ -4,40 +4,56 @@
     font-family: Arial, Helvetica, sans-serif;
     box-sizing: border-box;
 }
+
+/* ===== CONTAINER ===== */
 .container{
     width: 100%;
     min-height: 100vh;
     background: linear-gradient(135deg, #153667, #6d1d6d);
-    padding: 10px;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    top: 20px;
 }
+
+/* ===== APP ===== */
 .todo-app{
     width: 100%;
     max-width: 540px;
     background-color: #fff;
-    margin: 100px auto 20px;
-    padding: 40px 30px 70px;
-    border-radius: 10px;
+
+    padding: 40px 30px 60px;
+    border-radius: 15px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
+
+/* ===== TITLE ===== */
 .todo-app h2{
     color: pink;
     display: flex;
+    justify-content: center;
     align-items: center;
     margin-bottom: 20px;
 }
+
 .todo-app h2 img{
     width: 30px;
     margin-left: 10px;
 }
+
+/* ===== INPUT ROW ===== */
 .row{
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     background-color: rgba(156, 156, 155, 0.336);
     border-radius: 30px;
     padding-left: 20px;
     margin-bottom: 25px;
-
 }
 
 input{
@@ -45,127 +61,132 @@ input{
     border: none;
     outline: none;
     background-color: transparent;
-    padding: 10px;
-    font-weight: 14px;
+    padding: 12px;
+    font-size: 16px;
 }
+
 button{
     border: none;
     outline: none;
-    padding: 16px 50px;
-    background-color: rgba(212, 39, 255, 0.39);
+    padding: 14px 40px;
+    background-color: rgba(212, 39, 255, 0.6);
     color: #fff;
     cursor: pointer;
     border-radius: 30px;
+    transition: 0.2s;
 }
 
+button:active{
+    transform: scale(0.95);
+}
 
+/* ===== LIST ===== */
 ul li{
     list-style: none;
     font-size: 17px;
     padding: 12px 8px 12px 50px;
+
     user-select: none;
     cursor: pointer;
     position: relative;
 }
+
+/* icon check */
 ul li::before{
     content: '';
     position: absolute;
+
     height: 30px;
     width: 30px;
     border-radius: 50%;
+
     background-image: url(images/unchecked-41.png);
     background-size: cover;
     background-position: center;
-    left: 15px;
-    top: 7px
-    
- 
-    }
 
-   ul li.checked {
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* completed */
+ul li.checked{
     color: #555;
     text-decoration: line-through;
 }
+
 ul li.checked::before{
     background-image: url(images/checked.png);
 }
-ul li span {
+
+/* ===== DELETE BUTTON ===== */
+ul li span{
     position: absolute;
-    right: 0;
-    top: -5px;
-    width: 40px;
-    height: 40px;
-    font-size: 22px;
+    right: 10px;
+
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
     color: #555;
 
     display: flex;
-    justify-content: center; /* căn ngang */
-    align-items: center;     /* căn dọc */
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+    transition: 0.2s;
 }
 
 ul li span:hover{
-    background-color: red; 
-       border-radius: 50%;
-
+    background-color: red;
+    color: #fff;
 }
-/* ===== MOBILE VERSION ===== */
-@media (max-width: 600px) {
 
-    .container {
-        padding: 15px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+/* ===== MOBILE ===== */
+@media (max-width: 600px){
 
-    .todo-app {
-        width: 100%;
-        margin: 0;
+    .todo-app{
         padding: 20px 15px 30px;
-        border-radius: 15px;
     }
 
-    .todo-app h2 {
+    .todo-app h2{
         font-size: 20px;
-        justify-content: center;
         text-align: center;
     }
 
-    .row {
+    .row{
         flex-direction: column;
         gap: 10px;
         padding: 10px;
-        border-radius: 15px;
     }
 
-    input {
+    input{
+        width: 100%;
+    }
+
+    button{
         width: 100%;
         padding: 12px;
-        font-size: 16px;
     }
 
-    button {
-        width: 100%;
-        padding: 12px;
-        font-size: 16px;
-    }
-
-    ul li {
+    ul li{
         font-size: 16px;
         padding: 12px 8px 12px 45px;
     }
 
-    ul li::before {
+    ul li::before{
         width: 25px;
         height: 25px;
         left: 10px;
-        top: 10px;
     }
 
-    ul li span {
-        width: 35px;
-        height: 35px;
-        font-size: 18px;
+    ul li span{
         right: 5px;
+        width: 32px;
+        height: 32px;
+        font-size: 18px;
     }
 }
